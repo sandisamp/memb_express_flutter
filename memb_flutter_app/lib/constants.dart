@@ -8,7 +8,7 @@ final kBackgroundColor = Colors.deepPurple[100];
 final kTitleTextColor = Colors.white;
 final kTextSubColor = Colors.grey[400];
 final kTextStandardColor = Colors.black;
-final uri = 'http://192.168.0.108:3000/api/';
+final uri = 'http://192.168.0.100:3000/api/';
 
 final subTextStyle = TextStyle(
   fontSize: 16,

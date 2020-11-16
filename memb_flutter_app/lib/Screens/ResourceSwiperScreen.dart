@@ -34,6 +34,22 @@ class _ResourceSwiperState extends State<ResourceSwiper> {
   //   super.initState();
   //   loadResources();
   // }
+  void meaningAlertDialog(BuildContext context, var data){
+    showDialog(context: context,builder: (context){
+      return AlertDialog(
+          title: Text("${data[0]['word']}", style: Theme.of(context).textTheme.headline3),
+          content: Column(
+            children: [
+              Expanded(flex: 7,child: Text("Definition: ${data[0]['meanings'][0]['definitions'][0]['definition']}",style: Theme.of(context).textTheme.headline5)),
+              Divider(),
+              Expanded(flex: 2,child: Text("Examples: ${data[0]['meanings'][0]['definitions'][0]['example']}",style: Theme.of(context).textTheme.bodyText1)),
+              Divider(),
+              Expanded(flex: 1,child: Text("Synonyms: ${data[0]['meanings'][0]['definitions'][0]['synonyms']}",style: Theme.of(context).textTheme.bodyText1))
+            ],
+          ),
+      );
+    });
+  }
   TextEditingController newResourceController = TextEditingController();
   void createAlertDialog(BuildContext context){
     showDialog(context: context,builder: (context){
@@ -58,6 +74,12 @@ class _ResourceSwiperState extends State<ResourceSwiper> {
                 }else{
                   Toast.show("${response['body']}", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
                 }
+                Navigator.pop(context);
+                setState(() {
+                  place = place;
+                });
+                print(response['body']);
+                meaningAlertDialog(context, response['body']);
               },
           )
         ],

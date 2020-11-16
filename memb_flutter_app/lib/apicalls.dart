@@ -38,7 +38,7 @@ class ApiCalls {
 
     Future<Map> getCall(data, url) async {
       url = uri + url + '/' + data;
-      print(url);
+      // print(url);
       Map<String,String> headers;
       headers = {
         "Content-type": "Application/Json"
